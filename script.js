@@ -702,57 +702,85 @@ const loveMessage =
 
 我爱你 ♡`;
 
+/* ==================================================
+   打字机 - 滚动到才触发
+================================================== */
+
 let typingStarted = false;
 
-
 function startTyping() {
-
-    if (typingStarted) {
-
-        return;
-
-    }
-
-
+    if (typingStarted) return;
     typingStarted = true;
 
-
-    const element =
-        document.getElementById(
-            "typingText"
-        );
-
-
+    const element = document.getElementById("typingText");
     let index = 0;
 
-
     function type() {
-
-        if (
-            index <
-            loveMessage.length
-        ) {
-
-            element.textContent +=
-                loveMessage.charAt(index);
-
-
+        if (index < loveMessage.length) {
+            element.textContent += loveMessage.charAt(index);
             index++;
-
-
-            setTimeout(
-                type,
-                55
-            );
-
+            setTimeout(type, 55);
         }
-
     }
 
-
     type();
-
 }
+
+/* 监听滚动，当 .message-card 进入视野时才触发打字 */
+
+function observeTyping() {
+    const messageCard = document.querySelector(".message-card");
+
+    if (!messageCard) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // 元素进入视野，开始打字
+                    startTyping();
+                    // 开始后就停止观察，避免重复触发
+                    observer.unobserve(messageCard);
+                }
+            });
+        },
+        {
+            threshold: 0.3, // 当元素 30% 可见时触发
+        }
+    );
+
+    observer.observe(messageCard);
+}
+
+/* 在页面加载完成后调用监听 */
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("♡ Love Letter Loaded ♡");
+
+    // ★★★ 自动播放音乐 ★★★
+    const music = document.getElementById("bgm");
+    music.volume = 0.35;
+
+    music.play()
+        .then(() => {
+            musicPlaying = true;
+            updateMusicButton();
+            console.log("🎵 音乐已自动播放");
+        })
+        .catch(() => {
+            console.log("⛔ 浏览器阻止自动播放，等待用户点击");
+            document.addEventListener('click', function playOnFirstClick() {
+                music.play().then(() => {
+                    musicPlaying = true;
+                    updateMusicButton();
+                    console.log("🎵 用户点击后音乐开始播放");
+                }).catch(() => {});
+                document.removeEventListener('click', playOnFirstClick);
+            }, { once: true });
+        });
+
+    // ★★★ 监听打字区域 ★★★
+    observeTyping();
+});
 
 
 

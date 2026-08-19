@@ -416,22 +416,13 @@ function formatDate(date) {
 */
 
 const photos = [
-
-    "1.jpg",
-
-    "2.jpg",
-
-    "3.jpg",
-
-    "4.jpg",
-
-    "5.jpg",
-
-    "6.jpg",
-
-
+    "photos/1.jpg",
+    "photos/2.jpg",
+    "photos/3.jpg",
+    "photos/4.jpg",
+    "photos/5.jpg",
+    "photos/6.jpg"
 ];
-
 
 const captions = [
 

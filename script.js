@@ -510,7 +510,7 @@ function changePhoto() {
 
 setInterval(
     changePhoto,
-    3000
+    6000
 );
 
 

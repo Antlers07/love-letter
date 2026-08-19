@@ -211,9 +211,6 @@ function openLetter() {
 
             calculateLoveDays();
 
-
-            startTyping();
-
         }, 700);
 
     }, 1200);

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>To My Love ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==============================
+         背景
+    =============================== -->
+
+    <div id="stars"></div>
+
+    <div id="hearts"></div>
+
+
+    <!-- ==============================
+         音乐
+    =============================== -->
+
+    <audio id="bgm" loop>
+
+        <source src="music.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- ==============================
+         音乐按钮
+    =============================== -->
+
+    <button id="musicButton" onclick="toggleMusic()">
+
+        🎵
+
+    </button>
+
+
+    <!-- ==============================
+         开始页面
+    =============================== -->
+
+    <section id="startScreen" class="screen">
+
+        <div class="start-content">
+
+            <div class="small-star">✦</div>
+
+            <h1>给你的一封信</h1>
+
+            <p class="subtitle">
+                有些话，我想亲口告诉你。
+            </p>
+
+            <div class="envelope-wrapper">
+
+                <div
+                    class="envelope"
+                    id="envelope"
+                    onclick="openLetter()"
+                >
+
+                    <!-- 信封背面 -->
+
+                    <div class="envelope-back"></div>
+
+
+                    <!-- 信纸 -->
+
+                    <div class="letter-paper">
+
+                        <div class="letter-content">
+
+                            <span>To My Love</span>
+
+                            <span>♡</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- 信封前面 -->
+
+                    <div class="envelope-front">
+
+                        <div class="left-fold"></div>
+
+                        <div class="right-fold"></div>
+
+                        <div class="bottom-fold"></div>
+
+                    </div>
+
+
+                    <!-- 信封盖 -->
+
+                    <div class="envelope-flap"></div>
+
+
+                    <!-- 爱心 -->
+
+                    <div class="seal">
+
+                        ♥️
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="tap-text">
+
+                ♡ 点击信封打开 ♡
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         主页面
+    =============================== -->
+
+    <main id="mainContent" class="main-content hidden">
+
+
+        <!-- ==============================
+             Hero
+        =============================== -->
+
+        <section class="hero">
+
+            <p class="tiny-title">
+                FOR YOU, ALWAYS
+            </p>
+
+            <h1>
+                给我最爱的宝 肥肥鸿
+                <span>♡</span>
+            </h1>
+
+            <p class="hero-text">
+
+                遇见你之后，
+                普通的日子也开始变得闪闪发光。
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ==============================
+             恋爱天数
+        =============================== -->
+
+        <section class="love-days-section">
+
+            <div class="section-title">
+
+                <span>✦</span>
+
+                OUR LOVE
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="love-card">
+
+                <p>
+                    我们已经一起走过
+                </p>
+
+                <div id="loveDays">
+                    0
+                </div>
+
+                <p>
+                    天 ♡
+                </p>
+
+
+                <div class="date-info">
+
+                    Since
+
+                    <span id="startDate">
+                        2026.06.10
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             照片
+        =============================== -->
+
+        <section class="photo-section">
+
+            <div class="section-title">
+
+                <span>✦</span>
+
+                OUR MEMORIES
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <div class="photo-frame">
+
+                    <img
+                        id="photo"
+                        src="1.jpg"
+                        alt="Our Memory"
+                    >
+
+                </div>
+
+
+                <div class="photo-dots">
+
+                    <span class="dot active"></span>
+
+                    <span class="dot"></span>
+
+                    <span class="dot"></span>
+
+                    <span class="dot"></span>
+
+                    <span class="dot"></span>
+
+                </div>
+
+
+                <p id="photoCaption">
+
+                    我最喜欢的你 ♡
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             告白
+        =============================== -->
+
+        <section class="message-section">
+
+            <div class="section-title">
+
+                <span>✦</span>
+
+                A LITTLE MESSAGE
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="message-card">
+
+                <div class="quote-mark">
+                    “
+                </div>
+
+
+                <p id="typingText"></p>
+
+
+                <div class="message-sign">
+
+                    Love,
+
+                    <br>
+
+                    <span>Me ♡</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             最后的按钮
+        =============================== -->
+
+        <section class="surprise-section">
+
+            <button
+                class="love-button"
+                onclick="showSurprise()"
+            >
+
+                点这里
+
+                <span>♡</span>
+
+            </button>
+
+
+            <div
+                id="surprise"
+                class="surprise hidden"
+            >
+
+                <div class="big-heart">
+
+                    ♥️
+
+                </div>
+
+
+                <h2>
+                    I Love You
+                </h2>
+
+
+                <p>
+
+                    今天喜欢你，
+                    明天也喜欢你。
+
+                    <br>
+
+                    以后每一天，都喜欢你。
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             Footer
+        =============================== -->
+
+        <footer>
+
+            Made with ♡
+
+            <br>
+
+            Just for you.
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==============================
+         JavaScript
+    =============================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1251 @@
+/* ==================================================
+   基础
+================================================== */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+
+    color: #6f4657;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            #fff6fa 35%,
+            #ffeaf2 100%
+        );
+
+    overflow-x: hidden;
+
+}
+
+
+/* ==================================================
+   星空
+================================================== */
+
+#stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,0.9);
+
+    animation:
+        twinkle 2s infinite ease-in-out;
+
+}
+
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: 0.25;
+
+        transform: scale(0.7);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.5);
+
+    }
+
+}
+
+
+/* ==================================================
+   爱心
+================================================== */
+
+#hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 20;
+
+}
+
+
+.heart {
+
+    position: absolute;
+
+    top: -40px;
+
+    color: #f49bbb;
+
+    opacity: 0.8;
+
+    animation:
+        heartFall linear forwards;
+
+}
+
+
+@keyframes heartFall {
+
+    0% {
+
+        transform:
+            translateY(-50px)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.9;
+
+    }
+
+    90% {
+
+        opacity: 0.7;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ==================================================
+   页面
+================================================== */
+
+.screen {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+.start-content {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+}
+
+
+.start-content h1 {
+
+    margin: 0;
+
+    color: #d9789b;
+
+    font-size: 32px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+}
+
+
+.subtitle {
+
+    margin-top: 12px;
+
+    color: #a9798a;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.small-star {
+
+    color: #e999b5;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+
+    animation:
+        floatingStar 2s ease-in-out infinite;
+
+}
+
+
+@keyframes floatingStar {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-8px);
+
+    }
+
+}
+
+
+/* ==================================================
+   信封
+================================================== */
+
+.envelope-wrapper {
+
+    width: 330px;
+
+    height: 280px;
+
+    margin: 35px auto 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.envelope {
+
+    position: relative;
+
+    width: 300px;
+
+    height: 190px;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+}
+
+
+/* 信封底 */
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #f4a7c1;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 50px rgba(190, 100, 130, 0.25);
+
+}
+
+
+/* 信纸 */
+
+.letter-paper {
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 170px;
+
+    left: 25px;
+
+    top: 10px;
+
+    background: #fffdfd;
+
+    border-radius: 7px;
+
+    z-index: 2;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.8,.2,1);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+
+.letter-content {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    color: #d981a0;
+
+    font-size: 18px;
+
+}
+
+
+/* 信封前面 */
+
+.envelope-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+}
+
+
+/* 左边 */
+
+.left-fold {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 0;
+
+    height: 0;
+
+    border-top: 95px solid transparent;
+
+    border-left: 150px solid #f8bfd2;
+
+}
+
+
+/* 右边 */
+
+.right-fold {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 0;
+
+    width: 0;
+
+    height: 0;
+
+    border-top: 95px solid transparent;
+
+    border-right: 150px solid #f8bfd2;
+
+}
+
+
+/* 下方 */
+
+.bottom-fold {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 150px solid transparent;
+
+    border-right: 150px solid transparent;
+
+    border-bottom: 110px solid #f4abc4;
+
+}
+
+
+/* 信封盖 */
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 150px solid transparent;
+
+    border-right: 150px solid transparent;
+
+    border-top: 105px solid #ec8fb0;
+
+    transform-origin: top center;
+
+    z-index: 6;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* 爱心封印 */
+
+.seal {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+
+    top: 91px;
+
+    transform: translate(-50%, -50%);
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff;
+
+    color: #e8759e;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 5px 15px rgba(180, 80, 110, 0.2);
+
+    transition:
+        opacity .5s,
+        transform .5s;
+
+}
+
+
+/* 打开 */
+
+.envelope.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+
+}
+
+
+.envelope.open .letter-paper {
+
+    transform:
+        translateY(-130px);
+
+}
+
+
+.envelope.open .seal {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+}
+
+
+.tap-text {
+
+    color: #c9879e;
+
+    font-size: 13px;
+
+    animation:
+        tapPulse 2s infinite;
+
+}
+
+
+@keyframes tapPulse {
+
+    0%,
+    100% {
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* ==================================================
+   主页面
+================================================== */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+.main-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 60px 20px 30px;
+
+    animation:
+        pageAppear 1.2s ease;
+
+}
+
+
+@keyframes pageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ==================================================
+   Hero
+================================================== */
+
+.hero {
+
+    text-align: center;
+
+    padding:
+        30px 10px 70px;
+
+}
+
+
+.tiny-title {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: #d78ca7;
+
+}
+
+
+.hero h1 {
+
+    margin:
+        15px 0;
+
+    font-size:
+        clamp(28px, 8vw, 45px);
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    color: #bd6889;
+
+}
+
+
+.hero h1 span {
+
+    color: #ed8caf;
+
+}
+
+
+.hero-text {
+
+    max-width: 430px;
+
+    margin: auto;
+
+    line-height: 2;
+
+    color: #987282;
+
+    font-size: 14px;
+
+}
+
+
+/* ==================================================
+   Section title
+================================================== */
+
+.section-title {
+
+    text-align: center;
+
+    color: #ce7e9c;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.section-title span {
+
+    margin: 0 8px;
+
+    color: #ee9eb8;
+
+}
+
+
+/* ==================================================
+   恋爱天数
+================================================== */
+
+.love-days-section {
+
+    padding:
+        30px 0 80px;
+
+}
+
+
+.love-card {
+
+    text-align: center;
+
+    padding:
+        40px 20px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,0.72);
+
+    border:
+        1px solid rgba(255,255,255,0.9);
+
+    box-shadow:
+        0 15px 50px rgba(200,120,150,0.12);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.love-card p {
+
+    margin: 8px 0;
+
+    font-size: 14px;
+
+    color: #a27585;
+
+}
+
+
+#loveDays {
+
+    font-size:
+        clamp(55px, 15vw, 90px);
+
+    line-height: 1;
+
+    margin: 15px 0;
+
+    font-weight: 300;
+
+    color: #dd7f9f;
+
+}
+
+
+.date-info {
+
+    margin-top: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #b995a2;
+
+}
+
+
+#startDate {
+
+    color: #d87d9d;
+
+}
+
+
+/* ==================================================
+   相册
+================================================== */
+
+.photo-section {
+
+    padding:
+        20px 0 80px;
+
+}
+
+
+.photo-card {
+
+    text-align: center;
+
+}
+
+
+.photo-frame {
+
+    position: relative;
+
+    width: min(100%, 400px);
+
+    margin: auto;
+
+    padding: 10px;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 15px 40px rgba(180,90,120,.18);
+
+    transform:
+        rotate(-1deg);
+
+}
+
+
+.photo-frame img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    border-radius: 5px;
+
+    transition:
+        opacity .5s ease;
+
+}
+
+
+.photo-dots {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+}
+
+
+.dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #edc4d2;
+
+    transition:
+        .3s;
+
+}
+
+
+.dot.active {
+
+    width: 20px;
+
+    border-radius: 10px;
+
+    background: #e68ba9;
+
+}
+
+
+#photoCaption {
+
+    margin-top: 18px;
+
+    color: #a77788;
+
+    font-size: 13px;
+
+}
+
+
+/* ==================================================
+   告白
+================================================== */
+
+.message-section {
+
+    padding:
+        20px 0 80px;
+
+}
+
+
+.message-card {
+
+    position: relative;
+
+    background:
+        rgba(255,255,255,.75);
+
+    border-radius: 25px;
+
+    padding:
+        50px 30px;
+
+    box-shadow:
+        0 15px 50px rgba(190,100,130,.12);
+
+    text-align: center;
+
+}
+
+
+.quote-mark {
+
+    position: absolute;
+
+    top: 10px;
+
+    left: 25px;
+
+    font-size: 70px;
+
+    color: #f5cada;
+
+    font-family: Georgia, serif;
+
+}
+
+
+#typingText {
+
+    min-height: 150px;
+
+    line-height: 2.2;
+
+    font-size: 15px;
+
+    color: #805c6b;
+
+    white-space: pre-line;
+
+}
+
+
+.message-sign {
+
+    margin-top: 25px;
+
+    font-size: 12px;
+
+    color: #b28796;
+
+}
+
+
+.message-sign span {
+
+    color: #d77d9d;
+
+    font-size: 15px;
+
+}
+
+
+/* ==================================================
+   Surprise
+================================================== */
+
+.surprise-section {
+
+    text-align: center;
+
+    padding:
+        20px 0 100px;
+
+}
+
+
+.love-button {
+
+    border: none;
+
+    padding:
+        14px 30px;
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4a5bf,
+            #df7f9f
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(220,120,150,.25);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+
+}
+
+
+.love-button:active {
+
+    transform:
+        scale(.94);
+
+}
+
+
+.love-button span {
+
+    margin-left: 5px;
+
+}
+
+
+.surprise {
+
+    margin-top: 40px;
+
+    animation:
+        surpriseAppear 1s ease;
+
+}
+
+
+@keyframes surpriseAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.7);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+.big-heart {
+
+    font-size: 65px;
+
+    animation:
+        heartBeat 1.2s infinite;
+
+}
+
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+    }
+
+}
+
+
+.surprise h2 {
+
+    font-weight: 400;
+
+    color: #d67597;
+
+    font-size: 30px;
+
+}
+
+
+.surprise p {
+
+    color: #967180;
+
+    line-height: 2;
+
+    font-size: 14px;
+
+}
+
+
+/* ==================================================
+   Footer
+================================================== */
+
+footer {
+
+    text-align: center;
+
+    color: #c29aaa;
+
+    font-size: 11px;
+
+    line-height: 2;
+
+    padding-bottom: 30px;
+
+}
+
+
+/* ==================================================
+   音乐按钮
+================================================== */
+
+#musicButton {
+
+    position: fixed;
+
+    top: 20px;
+
+    right: 20px;
+
+    z-index: 100;
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.9);
+
+    background:
+        rgba(255,255,255,.75);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 5px 20px rgba(190,100,130,.15);
+
+    color: #d77e9e;
+
+    cursor: pointer;
+
+}
+
+
+/* ==================================================
+   手机
+================================================== */
+
+@media (max-width: 500px) {
+
+    .start-content h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .envelope-wrapper {
+
+        transform:
+            scale(.9);
+
+        margin-top: 20px;
+
+    }
+
+
+    .main-content {
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+
+    }
+
+
+    .message-card {
+
+        padding:
+            45px 22px;
+
+    }
+
+}

@@ -715,7 +715,7 @@ function startTyping() {
         if (index < loveMessage.length) {
             element.textContent += loveMessage.charAt(index);
             index++;
-            setTimeout(type, 55);
+            setTimeout(type, 85);
         }
     }
 

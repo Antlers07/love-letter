@@ -1153,6 +1153,52 @@ body {
 
 }
 
+/* ==================================================
+   情书展开/收起
+================================================== */
+
+#typingWrapper {
+    max-height: 300px;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+}
+
+#typingWrapper.expanded {
+    max-height: 3000px;
+}
+
+.toggle-btn {
+    display: inline-block;
+    margin: 12px auto 8px auto;
+    padding: 6px 18px;
+    background: transparent;
+    border: 1px solid rgba(255, 120, 150, 0.35);
+    border-radius: 20px;
+    color: #d46a7a;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 120, 150, 0.1);
+    border-color: #d46a7a;
+}
+
+.toggle-btn #toggleIcon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn .icon-rotate {
+    transform: rotate(180deg);
+}
+
+.hidden-btn {
+    display: none !important;
+}
 
 /* ==================================================
    Footer

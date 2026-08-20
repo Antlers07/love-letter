@@ -703,7 +703,7 @@ const loveMessage =
 我爱你 ♡`;
 
 /* ==================================================
-   打字机 - 滚动到才触发
+   打字机 - 滚动到才触发 + 展开收起
 ================================================== */
 
 let typingStarted = false;
@@ -719,7 +719,26 @@ function startTyping() {
         if (index < loveMessage.length) {
             element.textContent += loveMessage.charAt(index);
             index++;
-            setTimeout(type, 90);
+            setTimeout(type, 100);
+        } else {
+            // ★★★ 打字完成，显示按钮 ★★★
+            const btn = document.getElementById("toggleMessageBtn");
+            if (btn) {
+                btn.style.display = "inline-block";
+            }
+            // 默认收起状态
+            const wrapper = document.getElementById("typingWrapper");
+            if (wrapper) {
+                wrapper.classList.remove("expanded");
+            }
+            const icon = document.getElementById("toggleIcon");
+            if (icon) {
+                icon.textContent = "▼";
+            }
+            const btnText = document.querySelector("#toggleMessageBtn span:last-child");
+            if (btnText) {
+                btnText.textContent = "展开";
+            }
         }
     }
 
@@ -820,7 +839,27 @@ function showSurprise() {
 
 }
 
+/* ==================================================
+   情书展开/收起
+================================================== */
 
+function toggleMessage() {
+    const wrapper = document.getElementById("typingWrapper");
+    const icon = document.getElementById("toggleIcon");
+    const btnText = document.querySelector("#toggleMessageBtn span:last-child");
+
+    if (!wrapper) return;
+
+    if (wrapper.classList.contains("expanded")) {
+        wrapper.classList.remove("expanded");
+        if (icon) icon.textContent = "▼";
+        if (btnText) btnText.textContent = "展开";
+    } else {
+        wrapper.classList.add("expanded");
+        if (icon) icon.textContent = "▲";
+        if (btnText) btnText.textContent = "收起";
+    }
+}
 
 /* ==================================================
    页面打开 - 自动播放音乐

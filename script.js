@@ -418,7 +418,9 @@ const photos = [
     "photos/3.jpg",
     "photos/4.jpg",
     "photos/5.jpg",
-    "photos/6.jpg"
+    "photos/6.jpg",
+    "photos/7.jpg"
+   
 ];
 
 const captions = [
@@ -433,6 +435,8 @@ const captions = [
     "你第一次小心抱着狐獴的样子，真的很有爱哦哦哦，\n也是那一刻，让我看到了你温柔的一面嘿嘿，\n虽然你一直都挺温柔的",
 
     "本来想拍风景的，你故意跑过来挡我镜头。\n我顺势往后退几步直接拍你，\n这张意外抓拍，反而成了我最爱的瞬间。",
+
+     "七夕送你的小礼物，看到你笑得这么开心，\n我就放心了。还好你喜欢，我也好开心。",
 ];
 
 let currentPhoto = 0;
